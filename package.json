@@ -4,6 +4,9 @@
   "displayName": "Windows Service",
   "unity": "6000.0",
   "description": "Сервис для организации работы с окнами",
+  "dependencies": {
+    "com.ambidekster.commonsolutions": "1.1.0"
+  },
   "author": {
     "name": "ambidekster",
     "email": "ambidekster@icloud.com"
