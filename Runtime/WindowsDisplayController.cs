@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using CommonSolutions.Runtime.Extensions;
 using CommonSolutions.Runtime.Pool;
-using CommonSolutions.Runtime.Providers.Assets;
-using CommonSolutions.Runtime.Providers.Assets.SpecificProviders;
 using Services.WindowsService.Runtime.Providers;
 using Services.WindowsService.Runtime.Tools;
 using Services.WindowsService.Runtime.Views;
