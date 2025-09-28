@@ -1,3 +1,4 @@
+using System;
 using Services.WindowsService.Runtime.Views;
 
 namespace Services.WindowsService.Runtime
@@ -6,7 +7,7 @@ namespace Services.WindowsService.Runtime
     {
         void Initialize();
         
-        IWindowView ShowWindow(WindowType type, WindowParameters parameters);
+        IWindowView ShowWindow(Enum type, WindowParameters parameters);
         void HideWindow(IWindowView view);
     }
 }

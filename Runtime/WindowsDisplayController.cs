@@ -1,12 +1,15 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CommonSolutions.Runtime.Extensions;
 using CommonSolutions.Runtime.Pool;
 using CommonSolutions.Runtime.Providers.Assets;
 using CommonSolutions.Runtime.Providers.Assets.SpecificProviders;
+using Services.WindowsService.Runtime.Providers;
 using Services.WindowsService.Runtime.Tools;
 using Services.WindowsService.Runtime.Views;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Services.WindowsService.Runtime
 {
@@ -15,8 +18,14 @@ namespace Services.WindowsService.Runtime
         private readonly List<IWindowDisplayController> _activeWindows = new List<IWindowDisplayController>();
         
         private RootCanvas _rootCanvas;
-        private AssetProvider<GameObject> _windowViewsProvider;
         private IObjectsPool _windowsPool;
+        
+        private readonly IWindowViewProvider _windowViewsProvider;
+
+        public WindowsDisplayController(IWindowViewProvider windowViewsProvider)
+        {
+            _windowViewsProvider = windowViewsProvider;
+        }
 
         public void Initialize()
         {
@@ -24,11 +33,9 @@ namespace Services.WindowsService.Runtime
             
             _rootCanvas = Object.Instantiate(Resources.Load<RootCanvas>(WindowsConsts.Resources.RootCanvasPrefabPath));
             _rootCanvas.name = "RootCanvas";
-            
-            _windowViewsProvider = Resources.Load<GameObjectProvider>(WindowsConsts.Resources.ViewsProviderPath);
         }
 
-        public IWindowView ShowWindow(WindowType type, WindowParameters parameters)
+        public IWindowView ShowWindow(Enum type, WindowParameters parameters)
         {
             var windowView = GetWindowView(type);
             if(windowView != null)
@@ -51,9 +58,9 @@ namespace Services.WindowsService.Runtime
         
         private IWindowDisplayController GetCurrentWindow() => _activeWindows.LastOrDefault();
 
-        private IWindowView GetWindowView(WindowType type)
+        private IWindowView GetWindowView(Enum type)
         {
-            var prefab = _windowViewsProvider.GetAsset(type.ToString());
+            var prefab = _windowViewsProvider.GetSource(type.ToString());
             return _windowsPool.Instantiate(prefab, _rootCanvas.WindowsHolder)
                                .GetComponent<IWindowView>();
         }

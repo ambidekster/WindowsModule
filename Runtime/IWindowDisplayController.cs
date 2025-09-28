@@ -3,11 +3,11 @@ using Services.WindowsService.Runtime.Views;
 
 namespace Services.WindowsService.Runtime
 {
-    public interface IWindowDisplayController
+    internal interface IWindowDisplayController
     {
         event EventHandler<WindowState> StateChanged;
         
-        WindowType WindowType { get; }
+        Enum WindowType { get; }
         IWindowView View { get; }
         WindowState State { get; }
 
