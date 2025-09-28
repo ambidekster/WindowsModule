@@ -1,0 +1,11 @@
+{
+  "name": "com.ambidekster.windowsservice",
+  "version": "1.0.0",
+  "displayName": "Windows Service",
+  "unity": "6000.0",
+  "description": "Сервис для организации работы с окнами",
+  "author": {
+    "name": "ambidekster",
+    "email": "ambidekster@icloud.com"
+  }
+}
