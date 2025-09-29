@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CommonSolutions.Runtime.Extensions;
 using CommonSolutions.Runtime.Pool;
-using Services.WindowsService.Runtime.Providers;
-using Services.WindowsService.Runtime.Tools;
+using CommonSolutions.Runtime.Providers.Assets;
 using Services.WindowsService.Runtime.Views;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -16,20 +15,23 @@ namespace Services.WindowsService.Runtime
         private readonly List<IWindowDisplayController> _activeWindows = new List<IWindowDisplayController>();
         
         private RootCanvas _rootCanvas;
-        private IObjectsPool _windowsPool;
         
-        private readonly IWindowViewProvider _windowViewsProvider;
+        private readonly IObjectsPool _windowsPool;
+        private readonly GameObject _rootCanvasPrefab;
+        private readonly IAssetProvider<GameObject> _windowPrefabProvider;
 
-        public WindowsDisplayController(IWindowViewProvider windowViewsProvider)
+        public WindowsDisplayController(GameObject rootCanvasPrefab, 
+                                        IAssetProvider<GameObject> windowPrefabProvider)
         {
-            _windowViewsProvider = windowViewsProvider;
+            _windowsPool = new ObjectsPool("Windows");
+            
+            _rootCanvasPrefab = rootCanvasPrefab;
+            _windowPrefabProvider = windowPrefabProvider;
         }
 
         public void Initialize()
         {
-            _windowsPool = new ObjectsPool("Windows");
-            
-            _rootCanvas = Object.Instantiate(Resources.Load<RootCanvas>(WindowsConsts.Resources.RootCanvasPrefabPath));
+            _rootCanvas = Object.Instantiate(_rootCanvasPrefab).GetComponent<RootCanvas>();
             _rootCanvas.name = "RootCanvas";
         }
 
@@ -58,7 +60,7 @@ namespace Services.WindowsService.Runtime
 
         private IWindowView GetWindowView(Enum type)
         {
-            var prefab = _windowViewsProvider.GetSource(type.ToString());
+            var prefab = _windowPrefabProvider.GetAsset(type.ToString());
             return _windowsPool.Instantiate(prefab, _rootCanvas.WindowsHolder)
                                .GetComponent<IWindowView>();
         }
