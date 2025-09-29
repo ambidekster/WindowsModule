@@ -1,4 +1,4 @@
-namespace Services.WindowsService.Runtime
+namespace Modules.WindowsModule.Runtime
 {
     public enum WindowState
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace Services.WindowsService.Runtime
+namespace Modules.WindowsModule.Runtime
 {
     public abstract class WindowParameters
     {

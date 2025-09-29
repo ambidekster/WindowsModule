@@ -4,11 +4,11 @@ using System.Linq;
 using CommonSolutions.Runtime.Extensions;
 using CommonSolutions.Runtime.Pool;
 using CommonSolutions.Runtime.Providers.Assets;
-using Services.WindowsService.Runtime.Views;
+using Modules.WindowsModule.Runtime.Views;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Services.WindowsService.Runtime
+namespace Modules.WindowsModule.Runtime
 {
     public class WindowsDisplayController : IWindowsDisplayController
     {

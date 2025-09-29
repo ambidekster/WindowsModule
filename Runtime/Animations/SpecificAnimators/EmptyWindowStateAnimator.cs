@@ -1,6 +1,6 @@
 using System;
 
-namespace Services.WindowsService.Runtime.Animations.SpecificAnimators
+namespace Modules.WindowsModule.Runtime.Animations.SpecificAnimators
 {
     public class EmptyWindowStateAnimator : WindowStateAnimator
     {

@@ -2,20 +2,20 @@ using System;
 using CommonSolutions.Runtime.Providers.Assets;
 using UnityEngine;
 
-namespace Services.WindowsService.Runtime.Builders
+namespace Modules.WindowsModule.Runtime.Builders
 {
-    public class WindowsServiceBuilder : IWindowsServiceBuilder
+    public class WindowsModuleBuilder : IWindowsModuleBuilder
     {
         private IAssetProvider<GameObject> _windowsPrefabProvider;
         private GameObject _rootCanvasPrefab;
         
-        public IWindowsServiceBuilder WithWindowPrefabProvider(IAssetProvider<GameObject> provider)
+        public IWindowsModuleBuilder WithWindowPrefabProvider(IAssetProvider<GameObject> provider)
         {
             _windowsPrefabProvider = provider;
             return this;
         }
 
-        public IWindowsServiceBuilder WithRootCanvas(GameObject rootCanvas)
+        public IWindowsModuleBuilder WithRootCanvas(GameObject rootCanvas)
         {
             _rootCanvasPrefab = rootCanvas;
             return this;

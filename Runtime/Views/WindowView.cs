@@ -1,9 +1,9 @@
 using System;
-using Services.WindowsService.Runtime.Animations;
+using Modules.WindowsModule.Runtime.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Services.WindowsService.Runtime.Views
+namespace Modules.WindowsModule.Runtime.Views
 {
     [RequireComponent(typeof(Canvas))]
     public abstract class WindowView<T> : MonoBehaviour, IWindowView where T : WindowParameters

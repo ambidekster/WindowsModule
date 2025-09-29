@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Services.WindowsService.Runtime.Views
+namespace Modules.WindowsModule.Runtime.Views
 {
     public interface IWindowView
     {

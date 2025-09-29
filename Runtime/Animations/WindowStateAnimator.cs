@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Services.WindowsService.Runtime.Animations
+namespace Modules.WindowsModule.Runtime.Animations
 {
     public abstract class WindowStateAnimator : MonoBehaviour, IWindowStateAnimator
     {

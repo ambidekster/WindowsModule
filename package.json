@@ -1,11 +1,11 @@
 {
-  "name": "com.ambidekster.windowsservice",
+  "name": "com.ambidekster.windowsmodule",
   "version": "1.0.0",
-  "displayName": "Windows Service",
+  "displayName": "Windows Module",
   "unity": "6000.0",
   "description": "Сервис для организации работы с окнами",
   "dependencies": {
-    "com.ambidekster.commonsolutions": "1.1.0"
+    "com.ambidekster.commonsolutions": "1.0.0"
   },
   "author": {
     "name": "ambidekster",

@@ -1,7 +1,7 @@
 using System;
-using Services.WindowsService.Runtime.Views;
+using Modules.WindowsModule.Runtime.Views;
 
-namespace Services.WindowsService.Runtime
+namespace Modules.WindowsModule.Runtime
 {
     internal class WindowDisplayController : IWindowDisplayController
     {

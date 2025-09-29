@@ -1,6 +1,6 @@
 using System;
 
-namespace Services.WindowsService.Runtime.Animations
+namespace Modules.WindowsModule.Runtime.Animations
 {
     public interface IWindowStateAnimator
     {
