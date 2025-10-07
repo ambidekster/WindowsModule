@@ -11,7 +11,7 @@ namespace Modules.WindowsModule.Runtime
         IWindowView View { get; }
         WindowState State { get; }
 
-        void Initialize(WindowParameters parameters, int sortingOrder);
+        void Initialize(WindowModel model, int sortingOrder);
         void StartShow();
         void StartHide();
     }

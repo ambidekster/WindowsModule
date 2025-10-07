@@ -2,11 +2,11 @@ using System;
 
 namespace Modules.WindowsModule.Runtime
 {
-    public abstract class WindowParameters
+    public abstract class WindowModel
     {
         public Action CloseButtonClicked { get; }
 
-        protected WindowParameters(Action closeButtonClicked = null)
+        protected WindowModel(Action closeButtonClicked = null)
         {
             CloseButtonClicked = closeButtonClicked;
         }

@@ -6,30 +6,30 @@ using UnityEngine.UI;
 namespace Modules.WindowsModule.Runtime.Views
 {
     [RequireComponent(typeof(Canvas))]
-    public abstract class WindowView<T> : MonoBehaviour, IWindowView where T : WindowParameters
+    public abstract class WindowView<T> : MonoBehaviour, IWindowView where T : WindowModel
     {
         [SerializeField] private Button _closeButton;
         [SerializeField] private Canvas _canvas;
         [SerializeField] private WindowStateAnimator _stateAnimator;
-        
-        protected T Parameters;
+
+        protected T Model { get; private set; }
 
         public int SortingOrder => _canvas.sortingOrder;
         
         public Transform Transform { get; private set; }
 
-        public void Initialize(WindowParameters parameters, int sortingOrder)
+        public void Initialize(WindowModel model, int sortingOrder)
         {
-            Parameters = parameters as T;
             Transform = transform;
             
             _canvas.overrideSorting = true;
             _canvas.sortingOrder = sortingOrder;
-            
-            OnInitialize();
+         
+            Model = model as T;
+            OnInitialize(Model);
         }
     
-        protected virtual void OnInitialize()
+        protected virtual void OnInitialize(T model)
         {
             
         }
@@ -74,7 +74,7 @@ namespace Modules.WindowsModule.Runtime.Views
         
         private void HandleCloseButtonClicked()
         {
-            Parameters.CloseButtonClicked?.Invoke();
+            Model.CloseButtonClicked?.Invoke();
         }
 
         private void SubscribeActions()

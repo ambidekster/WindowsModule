@@ -8,7 +8,7 @@ namespace Modules.WindowsModule.Runtime.Views
         int SortingOrder { get; }
         Transform Transform { get; }
 
-        void Initialize(WindowParameters parameters, int sortingOrder);
+        void Initialize(WindowModel model, int sortingOrder);
 
         void StartShow(Action completeCallback = null);
         void StartHide(Action completeCallback = null);

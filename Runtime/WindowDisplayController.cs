@@ -31,10 +31,10 @@ namespace Modules.WindowsModule.Runtime
             View = view;
         }
         
-        public void Initialize(WindowParameters parameters, int sortingOrder)
+        public void Initialize(WindowModel model, int sortingOrder)
         {
             State = WindowState.Undefined;
-            View.Initialize(parameters, sortingOrder);
+            View.Initialize(model, sortingOrder);
         }
 
         public void StartShow()

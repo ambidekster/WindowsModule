@@ -35,7 +35,7 @@ namespace Modules.WindowsModule.Runtime
             _rootCanvas.name = "RootCanvas";
         }
 
-        public IWindowView ShowWindow(Enum type, WindowParameters parameters)
+        public IWindowView ShowWindow(Enum type, WindowModel model)
         {
             var windowView = GetWindowView(type);
             if(windowView != null)
@@ -45,7 +45,7 @@ namespace Modules.WindowsModule.Runtime
 
                 var currentWindow = GetCurrentWindow();
                 var sortingOrder = currentWindow != null ? currentWindow.View.SortingOrder + 1 : 0;
-                windowDisplayController.Initialize(parameters, sortingOrder);
+                windowDisplayController.Initialize(model, sortingOrder);
                 windowDisplayController.StartShow();   
                 
                 _activeWindows.Add(windowDisplayController);

@@ -7,7 +7,7 @@ namespace Modules.WindowsModule.Runtime
     {
         void Initialize();
         
-        IWindowView ShowWindow(Enum type, WindowParameters parameters);
+        IWindowView ShowWindow(Enum type, WindowModel model);
         void HideWindow(IWindowView view);
     }
 }
