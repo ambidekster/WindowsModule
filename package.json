@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "displayName": "Windows Module",
   "unity": "6000.0",
-  "description": "Сервис для организации работы с окнами",
+  "description": "Window management module",
   "dependencies": {
     "com.ambidekster.commonsolutions": "1.0.0"
   },

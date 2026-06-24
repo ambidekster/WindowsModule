@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Modules.WindowsModule.Runtime.Animations;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ namespace Modules.WindowsModule.Runtime.Views
     [RequireComponent(typeof(Canvas))]
     public abstract class WindowView<T> : MonoBehaviour, IWindowView where T : WindowModel
     {
-        [SerializeField] private Button _closeButton;
+        [SerializeField] private List<Button> _closeButtons;
         [SerializeField] private Canvas _canvas;
         [SerializeField] private WindowStateAnimator _stateAnimator;
 
@@ -79,9 +80,12 @@ namespace Modules.WindowsModule.Runtime.Views
 
         private void SubscribeActions()
         {
-            if(_closeButton)
+            if(_closeButtons != null)
             {
-                _closeButton.onClick.AddListener(HandleCloseButtonClicked);
+                foreach(var button in _closeButtons)
+                {
+                    button.onClick.AddListener(HandleCloseButtonClicked);   
+                }
             }
             
             OnSubscribeActions();
@@ -94,9 +98,12 @@ namespace Modules.WindowsModule.Runtime.Views
         
         private void UnsubscribeActions()
         {
-            if(_closeButton)
+            if(_closeButtons != null)
             {
-                _closeButton.onClick.RemoveListener(HandleCloseButtonClicked);
+                foreach(var button in _closeButtons)
+                {
+                    button.onClick.RemoveListener(HandleCloseButtonClicked);
+                }
             }
             
             OnUnsubscribeActions();
